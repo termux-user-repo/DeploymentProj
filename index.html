@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Drop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="layout">
+        <aside class="side">
+            <a class="wordmark" href="./">Drop</a>
+            <p class="lede">Add the files for a static site and check it live. Then download a zip that any static host can serve.</p>
+
+            <div class="intake">
+                <button type="button" class="btn" id="pick-files">Add files</button>
+                <button type="button" class="btn" id="pick-folder">Add folder</button>
+            </div>
+
+            <div class="queue-head">
+                <span id="count">No files yet</span>
+                <button type="button" class="link" id="clear" hidden>Clear</button>
+            </div>
+            <ul id="files" class="files"></ul>
+
+            <div class="side-foot">
+                <p id="error" class="error" role="alert"></p>
+                <button type="button" class="btn primary" id="download" disabled>Download zip</button>
+                <p class="note">Upload the zip to Netlify Drop, or the unzipped folder to GitHub Pages.</p>
+            </div>
+        </aside>
+
+        <main class="stage" id="stage">
+            <div id="empty" class="empty">
+                <h2>Drop your site here</h2>
+                <p>Include an <code>index.html</code> at the top level. Everything stays in your browser.</p>
+            </div>
+
+            <div id="browser" class="browser" hidden>
+                <div class="chrome">
+                    <div id="address" class="address"></div>
+                    <div id="tabs" class="tabs" role="tablist"></div>
+                </div>
+                <iframe id="frame" title="Live preview of your site" sandbox="allow-scripts allow-forms allow-popups"></iframe>
+            </div>
+        </main>
+    </div>
+
+    <input id="file-input" type="file" multiple hidden>
+    <input id="dir-input" type="file" webkitdirectory hidden>
+
+    <script src="app.js" defer></script>
+</body>
+
+</html>
